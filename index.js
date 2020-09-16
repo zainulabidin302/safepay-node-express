@@ -26,12 +26,13 @@ app.get('/', (req, res) => {
 })
 app.post('/', async (req, res) => {
   let sfpy = new Safepay(config);
-
+  console.log(req.body)
   try {
     const { data } = await sfpy.payments.create({
       amount: parseInt(req.body.amount),
       currency: "PKR",
     });
+    console.log(data)
     const url  = await sfpy.checkout.create({
       tracker: data.data.token,
       orderId: req.body.amount,
