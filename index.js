@@ -20,7 +20,10 @@ const config = {
     apiSecret: process.env.API_SECRET
   }
 }
-
+app.get('/', (req, res) => {
+  res.send('Hello!');
+  res.end()
+})
 app.post('/', async (req, res) => {
   let sfpy = new Safepay(config);
 
