@@ -29,7 +29,7 @@ app.post('/', async (req, res) => {
 
   try {
     const { data } = await sfpy.payments.create({
-      amount: req.body.amount,
+      amount: parseInt(req.body.amount),
       currency: "PKR",
     });
     const url  = await sfpy.checkout.create({
